@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="modal-btn">
-      <button @click="openModal">Add Users</button>
+    <div>
+      <button class="modal-btn" @click="openModal">Add Users</button>
     </div>
 
-    <div class="modal-overlay" v-if="modalVisible" @click="closeModal">
+    <div class="modal" v-if="modalVisible" @click="closeModal">
       <div class="modal-content" @click.stop>
         <div class="registration-container">
           <form @submit.prevent="addUser" class="registration-form">
@@ -40,8 +40,8 @@
                 <option value="coordinator">Coordinator</option>
               </select>
             </div>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
-            <button @click="closeModal" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+            <button type="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+            <button @click="closeModal" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
           </form>
         </div>
       </div>
@@ -52,20 +52,20 @@
       <table class="w-full">
         <thead>
           <tr>
-            <th class="px-4 py-2">Name</th>
-            <th class="px-4 py-2">Email</th>
-            <th class="px-4 py-2">Organization</th>
-            <th class="px-4 py-2">Role</th>
-            <th class="px-4 py-2">Actions</th>
+            <th >Name</th>
+            <th >Email</th>
+            <th>Organization</th>
+            <th >Role</th>
+            <th >Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="user in users" :key="user._id">
-            <td class="px-4 py-2">{{ user.profile.firstName }} {{ user.profile.lastName }}</td>
-            <td class="px-4 py-2">{{ user.emails[0].address }}</td>
-            <td class="px-4 py-2">{{ user.profile.organizationName }}</td>
-            <td class="px-4 py-2">{{ user.profile.role }}</td>
-            <td class="px-4 py-2">
+            <td >{{ user.profile.firstName }} {{ user.profile.lastName }}</td>
+            <td >{{ user.emails[0].address }}</td>
+            <td >{{ user.profile.organizationName }}</td>
+            <td >{{ user.profile.role }}</td>
+            <td >
               <button @click="updateUser(user)" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mr-2">Update</button>
               <button @click="deleteUser(user._id)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
             </td>
@@ -217,17 +217,62 @@ export default {
 
 
 <style scoped>
+.modal-btn {
+  border-radius: 3px;
+  margin-top: 8rem; 
+  margin-left: 45rem;
+  padding: 10px;
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+ 
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1000;
+}
+
+.modal-content {
+  height: 1%;
+  width: 30%;
+  margin-top: 1rem;
+  margin-left: 10rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
 .registration-form {
   background-color: #f8f9fa;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  max-width: 400px; 
+  margin: 0 auto; /* Center the form horizontally */
+}
+
+.form-group {
+  margin-bottom: 4px; /* Adjust spacing between form groups */
+}
+
+.input-label {
+  display: block;
+  font-weight: bold;
 }
 
 .input-field {
   width: 100%;
-  padding: 1px;
-  border: solid #ced4da;
+  padding: 10px;
+  border: 1px solid #ced4da;
   border-radius: 6px;
   font-size: 16px;
   color: #495057;
@@ -239,14 +284,32 @@ export default {
   border-color: #007bff;
 }
 
-.users-table {
+select.input-field {
+  width: calc(100% - 22px); /* Adjust select width */
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-container button {
+  flex: 1;
+  margin-right: 10px; /* Adjust spacing between buttons */
+}
+
+table {
   padding-top: 10rem;
-  margin-left: 20%;
+  margin-left: 20rem;
   border-color: black;
 }
 
-th,
-td {
+th, td {
+  height: 1rem;
+  text-align: left;
+  width: 3rem;
   border-bottom: 1px solid #ddd;
 }
 </style>
+
+

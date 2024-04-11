@@ -20,12 +20,12 @@
           <td>{{ contact.email }}</td>
           <td>{{ contact.tags }}</td>
 
-          <td>
+          <td v-if="currentUser && currentUser.profile && currentUser.profile.role === 'keelaAdmin' || currentUser.profile.role === 'manager'">
             <button @click="updateContact(contact._id)"class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mr-2">Update</button>
-          </td>
-          <td>
             <button @click="deleteContact(contact._id)"class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2">Delete</button>
-          </td>
+
+          </td> 
+
         </tr>
       </tbody>
     </table>
@@ -38,10 +38,14 @@ import { subscribe, autorun } from 'vue-meteor-tracker';
 import { ContactsCollection } from '../../db/ContactsCollection';
 
 const contacts = ref([]);
+const currentUser = ref(null);
+
 
 subscribe('contacts');
 
 onMounted(() => {
+  currentUser.value = Meteor.user(); // Set currentUser value
+
   autorun(() => {
     const userId = Meteor.userId();
 
@@ -49,6 +53,7 @@ onMounted(() => {
       userId: userId
     }).fetch();
   });
+  return {currentUser};
 });
 
 const updateContact = (contactId) => {
@@ -95,17 +100,18 @@ const deleteContact = (contactId) => {
 </script>
 
 <style scoped>
-/* Add your table styling here if needed */
+
 table {
-  width: 75%;
-  border-collapse: collapse;
-  margin-top: 15px;
-  margin-left: 20rem;
+  margin-top: 5rem;
+  margin-left: 20%;
+  border-color: black;
+  table-layout: fixed;
 }
 
 th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
+  height: 1rem;
   text-align: left;
+  width: 60rem;
+  border-bottom: 1px solid #ddd;
 }
 </style>

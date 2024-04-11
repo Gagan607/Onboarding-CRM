@@ -1,7 +1,6 @@
 <template>
   <!-- Display Table -->
   <div class="tags-table">
-    <h2>Tags </h2>
     <table class="table">
       <thead>
         <tr>
@@ -78,29 +77,19 @@ const updateTag = (tag) => {
 </script>
 
 <style scoped>
-/* Your existing styles */
 
-.tags-table{
+table {
+  margin-top: 10rem;
   padding-top: 10rem;
   margin-left: 20%;
   border-color: black;
-
+  table-layout: fixed; /* Set table layout to fixed */
 }
 
 th, td {
   height: 1rem;
   text-align: left;
-  width: 40rem;
+  width: 50rem;
   border-bottom: 1px solid #ddd;
 }
-
-.Action-btn{
-  width: 4rem;
-  border: solid;
-  border-radius: 5px;
-  border-color: purple;
-  background-color: purple;
-  font-weight: bold;
-  color: white;
-} 
 </style>

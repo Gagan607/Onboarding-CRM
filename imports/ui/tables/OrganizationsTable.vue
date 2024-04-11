@@ -84,17 +84,17 @@
   </script>
   
   <style scoped>
-  /* Add your table styling here if needed */
-  table {
-    padding-top: 10rem;
-    margin-left: 20%;
-    border-color: black;
-    width: 75%;
-  }
-  
-  th, td {
-    border-bottom: 1px solid #ddd;
-    width: 1rem;
-  }
+table {
+  padding-top: 10rem;
+  margin-left: 20rem;
+  border-color: black;
+}
+
+th, td {
+  height: 1rem;
+  text-align: left;
+  width: 50rem;
+  border-bottom: 1px solid #ddd;
+}
   </style>
   
