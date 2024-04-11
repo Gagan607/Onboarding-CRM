@@ -10,7 +10,6 @@
       <div class="modal-content">
         <!-- Modal header -->
         <div class="modal-header">
-          <span class="close" @click="closeModal">&times;</span>
           <h2>New Tag</h2>
         </div>
 
@@ -25,15 +24,18 @@
 
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button class="Cancel-btn" @click="closeModal">Cancel</button>
-          <button class="Save-btn" @click="addTag">Save</button>
+          <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mr-2" @click="addTag">Save</button>
+          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2" @click="closeModal">Cancel</button>
         </div>
       </div>
-    </div>
-
-    <!-- Display Table -->
+    </div>   
+    <!-- display tags table    -->
     <TagsTable />
+
   </div>
+
+ 
+    
 </template>
 
 <script setup>
@@ -56,25 +58,19 @@ const closeModal = () => {
   showModal.value = false;
 };
 
-const onKeyDown = (event) => {
-  if (event.key === 'Escape') {
-    closeModal();
-  }
-};
 </script>
 
 <style scoped>
 /* Your existing styles */
 .tag-btn {
   border-radius: 3px;
-  margin-top: 80px;
-  margin-left: 50%;
+  margin-top: 8rem; /* Adjust margin top */
+  margin-left: 45rem;
   padding: 10px;
   background-color: purple;
   color: white;
   font-weight: bold;
 }
-
 
 #tag-input {
   width: 100%;
@@ -86,46 +82,59 @@ const onKeyDown = (event) => {
   box-sizing: border-box;
 }
 
-.modal-footer {
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1000;
+}
+
+.modal-content {
+  margin-left: 10rem;
+  width: 400px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
-.modal-footer > .Save-btn {
-  margin-right: 20px;
-  background-color: blueviolet;
-  color: white;
-  border-color: black;
-  width: 4rem;
-  border: solid;
-  border-radius: 4px;
+.modal-header h2 {
+  margin: 0;
 }
 
-/* Close button in the modal header */
 .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
   cursor: pointer;
 }
 
-/* Modal header */
-.modal-header {
-  padding: 10px 20px;
- 
-  color: white;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+.modal-body {
+  margin-bottom: 10px;
 }
 
-/* Modal footer */
 .modal-footer {
-  padding: 10px 20px;
-  background-color: #f3f3f3;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
+  display: flex;
+  justify-content: flex-end;
 }
 
+.Cancel-btn,
+.Save-btn {
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 </style>

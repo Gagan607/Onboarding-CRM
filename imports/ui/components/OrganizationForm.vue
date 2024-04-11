@@ -1,12 +1,11 @@
 <template>
     <div>
-        <div class="modal-btn">
-            <button @click="openModal">Add Organizations</button>
+        <div>
+            <button class="modal-btn" @click="openModal">Add Organizations</button>
         </div>
-        <div class="modal-overlay" v-if="modalVisible" @click="closeModal">
+        <div class="modal" v-if="modalVisible" @click="closeModal">
             <div class="modal-content" @click.stop>
                 <h1>Organizations Form</h1>
-                <button @click="closeModal">X</button>
                 <!-- Add your form elements here -->
                 <form @submit.prevent="addOrganization">
                     <input
@@ -27,6 +26,8 @@
                     <button id="Save-btn" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mr-2"type="submit">
                         Save
                     </button>
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2" @click="closeModal">Cancel</button>
+
                 </form>
             </div>
         </div>
@@ -88,19 +89,37 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .modal-btn{
-    margin-top: 10rem;
-    margin-left: 20rem;
+  border-radius: 3px;
+  margin-top: 8rem; /* Adjust margin top */
+  margin-left: 45rem;
+  padding: 10px;
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1000;
 }
 .modal-content{
-    border-color: black;
-    border: solid;
-    width: 50rem;
-    height: 20rem;
-    background-color: aquamarine;
-    margin-top: 2rem;
-    margin-left: 45rem;
+  margin-left: 10rem;
+  width: 400px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
 }
-
+.organization-table{
+  margin-top: 5rem;
+}
 </style>

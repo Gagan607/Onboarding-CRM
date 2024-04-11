@@ -14,11 +14,6 @@ import OrganizationsTable from './tables/OrganizationsTable.vue'
 export const router = createRouter({
   history: createWebHistory(),
   routes: [
-    {
-      path: '/org',
-      name: 'org',
-      component: OrganizationsTable,
-    },
 
     {
       path: '/register',

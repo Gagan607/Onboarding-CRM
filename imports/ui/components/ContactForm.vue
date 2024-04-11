@@ -18,9 +18,13 @@ subscribe('tags');
 
 onMounted(() => {
   autorun(() => {
-    tags.value = TagsCollection.find().fetch();
+    const userId = Meteor.userId();
+
+    tags.value = TagsCollection.find({
+      userId:userId
+    }).fetch();
   });
-});
+});;
 
 const addContact = () => {
   const trimmedFirstName = firstName.value.trim();
