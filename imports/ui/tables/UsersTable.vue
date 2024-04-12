@@ -95,7 +95,7 @@ export default {
     const email = ref('');
     const password = ref('');
     const rePassword = ref('');
-    const selectedRole = ref('manager'); // Default selected role
+    const selectedRole = ref(''); 
 
     const addUser = () => {
       const trimmedFirstName = firstName.value.trim();
@@ -127,7 +127,6 @@ export default {
         // Reset selected role to default
         selectedRole.value = 'manager';
   
-        // Optionally, you can close the modal after submission
         closeModal();
       }
     };

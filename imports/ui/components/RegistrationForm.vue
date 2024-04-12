@@ -1,4 +1,7 @@
 <template>
+      <div v-if="showSuccessMessage" class="success-message">
+      User registered successfully! Please login.
+    </div>
     <div class="registration-container">
       <form @submit.prevent="addUser" class="registration-form">
         <div class="form-group">
@@ -43,6 +46,7 @@
         <button id="Submit-btn" type="submit">Submit</button>
       </form>
     </div>
+
   </template>
   
   <script setup>
@@ -59,7 +63,8 @@
   const password = ref('');
   const rePassword = ref('');
   const selectedRole = ref('');
-  const userId = Meteor.userId();
+
+  const showSuccessMessage = ref(false);
   
   const addUser = () => {
     console.log('addUser function called');
@@ -81,6 +86,8 @@
         rePassword: trimmedRePassword,
         selectedRole: trimmedSelectedRole
       });
+
+      showSuccessMessage.value = true;
   
       firstName.value = '';
       middleName.value = '';
@@ -88,9 +95,11 @@
       email.value = '';
       password.value = '';
       rePassword.value = '';
-      selectedRole.value = 'manager';
+      selectedRole.value = '';
   
+      setTimeout(() => {
       router.push('/login');
+    }, 3000);
     }
   };
   </script>
@@ -148,5 +157,12 @@
   #Submit-btn:hover {
     background-color: #0056b3;
   }
-  </style>
+  .success-message {
+  padding: 10px;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  }
+</style>
   

@@ -20,8 +20,8 @@
           <td>{{ contact.email }}</td>
           <td>{{ contact.tags }}</td>
 
-          <td v-if="currentUser && currentUser.profile && currentUser.profile.role === 'keelaAdmin' || currentUser.profile.role === 'manager'">
-            <button @click="updateContact(contact._id)"class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mr-2">Update</button>
+          <td v-if="(currentUser && currentUser.profile && currentUser.profile.role === 'keelaAdmin') || (currentUser && currentUser.profile.role === 'manager')">
+             <button @click="updateContact(contact._id)"class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mr-2">Update</button>
             <button @click="deleteContact(contact._id)"class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2">Delete</button>
 
           </td> 

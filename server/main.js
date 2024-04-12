@@ -28,7 +28,35 @@ Meteor.startup(() => {
     });
   }
 
-})
+  if (!Accounts.findUserByEmail('manager@keela.com')) {
+    Accounts.createUser({
+      email: 'manager@keela.com',
+      password: 'admin',
+      profile: {
+        firstName: 'Keela',
+        lastName: 'Manager',
+            role: 'manager',
+            organizationId: '009',
+            organizationName: 'KEELA'
+      },
+    });
+  }
+
+  if (!Accounts.findUserByEmail('coordinator@keela.com')) {
+    Accounts.createUser({
+      email: 'coordinator@keela.com',
+      password: 'admin',
+      profile: {
+        firstName: 'Keela',
+        lastName: 'Coordinator',
+            role: 'coordinator',
+            organizationId: '009',
+            organizationName: 'KEELA'
+      },
+    });
+  }
+
+});
 
 
 Meteor.methods({
