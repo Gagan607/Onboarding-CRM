@@ -55,7 +55,7 @@ Meteor.methods({
           'profile.firstName': updatedData.firstName,
           'profile.middleName': updatedData.middleName,
           'profile.lastName': updatedData.lastName,
-          'emails.0.address': updatedData.email, // Assuming there's only one email
+          'emails.0.address': updatedData.email, 
           'profile.role': updatedData.selectedRole
         }
       });

@@ -57,7 +57,7 @@ export const router = createRouter({
         {
           path: '/tags',
           name: 'tags',
-          component: Tags, // Use the layout component for the root route
+          component: Tags, 
           meta: {
             requiresAuth: true
           }
@@ -66,7 +66,7 @@ export const router = createRouter({
         {
           path: '/users',
           name: 'users',
-          component: Users, // Use the layout component for the root route
+          component: Users,  
           meta: {
             requiresAuth: true
           }
@@ -75,7 +75,7 @@ export const router = createRouter({
         {
           path: '/organizations',
           name: 'organizations',
-          component: Organizations, // Use the layout component for the root route
+          component: Organizations, 
           meta: {
             requiresAuth: true
           }
